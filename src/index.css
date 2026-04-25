@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-brandBlue: #003262;
+  --color-calGold: #FDB515;
+  --color-metalGold: #BC9B6A;
+  --color-ink: #061524;
+  --color-cream: #FFF8E7;
+  --color-muted: #C9BFA8;
+
+  --color-accent: #FDB515;
+  --color-accent-hover: #e3a312;
+  --color-surface: #061524;
+  --color-surface-lighter: #0b2240;
+}
+
+@layer base {
+  :root {
+    --nav-height: 64px;
+    --nav-offset: calc(var(--nav-height) + env(safe-area-inset-top));
+  }
+
+  html {
+    scroll-padding-top: var(--nav-offset);
+  }
+
+  section[id] {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+  body {
+    @apply bg-surface text-cream font-sans;
+    background-image: radial-gradient(circle at 12% 10%, rgba(253, 181, 21, 0.08) 0%, transparent 32%), radial-gradient(circle at 86% 18%, rgba(0, 50, 98, 0.5) 0%, transparent 42%), linear-gradient(180deg, #061524 0%, #04101d 100%);
+  }
+
+  ::selection {
+    @apply bg-accent text-ink;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-calGold;
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgba(253, 181, 21, 0.55);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #061524;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #BC9B6A 0%, #8f744f 100%);
+    border-radius: 999px;
+  }
+}
+
+.glass {
+  background: rgba(0, 50, 98, 0.18);
+  border: 1px solid rgba(188, 155, 106, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.glow-atmosphere {
+  background: radial-gradient(circle at center, rgba(253, 181, 21, 0.2) 0%, rgba(188, 155, 106, 0.12) 28%, rgba(0, 50, 98, 0.08) 52%, transparent 75%);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cream via-muted to-metalGold;
+}
